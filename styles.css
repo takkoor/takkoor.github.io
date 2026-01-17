@@ -38,6 +38,7 @@ p {
 
 /* --- Hero --- */
 .hero {
+  max-width: 700px;
   padding: 6rem 1.5rem 4rem;
   background: linear-gradient(135deg, #e0f2fe, #ffffff);
   text-align: center;
@@ -222,23 +223,30 @@ p {
   background-color: #555;
 }
 
+.about {
+  margin: 4rem auto;
+  max-width: 700px;  /* controls line length for readability */
+  padding: 40px 20px; /* space around text */
+  text-align: center; /* optional, center content */
+}
+
+
 /* --- Contact / Footer --- */
 .contact {
-  margin: 4rem 0;
+  width: 100%;             /* full width */
   padding: 60px 20px;
-  background-color: #111111; /* dark footer */
+  background-color: #111111;
   color: #ffffff;
   text-align: center;
-  max-width: 700px;
-  margin-left: auto;
-  margin-right: auto;
+  box-sizing: border-box;  /* ensures padding doesn’t break width */
+  margin: 0;               /* remove auto margin */
 }
+
 
 .contact p {
   max-width: 500px;
   margin: 0 auto;
   line-height: 1.6;
-  text-align: center;
 }
 
 .contact a {
