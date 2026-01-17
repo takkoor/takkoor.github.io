@@ -38,11 +38,10 @@ p {
 
 /* --- Hero --- */
 .hero {
-  text-align: center;          /* center everything inside header */
-  padding: 6rem 1.5rem 4rem;   /* keep spacing from top */
-  background: linear-gradient(135deg, #e0f2fe, #ffffff); /* optional background */
-  max-width: 100%;             /* full width of viewport */
-  margin: 0;                   /* remove auto margins that can shift it */
+  text-align: center;       /* center header text */
+  padding: 6rem 1.5rem 4rem;
+  max-width: 100%;          /* span full width */
+  margin: 0;                /* remove auto margins */
 }
 
 .tagline {
