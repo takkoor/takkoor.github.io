@@ -38,7 +38,6 @@ p {
 
 /* --- Hero --- */
 .hero {
-  max-width: 700px;
   padding: 6rem 1.5rem 4rem;
   background: linear-gradient(135deg, #e0f2fe, #ffffff);
   text-align: center;
