@@ -65,6 +65,12 @@ p {
   padding: 0 1.5rem;
 }
 
+.work h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
 .project {
   padding: 1.5rem;
   border-radius: 12px;
