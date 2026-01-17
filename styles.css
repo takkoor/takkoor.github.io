@@ -44,6 +44,13 @@ p {
   margin: 0;                /* remove auto margins */
 }
 
+.hero-container {
+  max-width: 800px;      /* constrain text width for readability */
+  margin: 0 auto;        /* center container */
+  text-align: center;    /* center all text inside */
+  padding: 0 20px;       /* optional padding for smaller screens */
+}
+
 .tagline {
   font-size: 1.2rem;
   color: #555;
