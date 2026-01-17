@@ -22,11 +22,18 @@ p {
   color: #334155;
 }
 
-
 .hero {
-  padding: 4rem 1.5rem;
-  max-width: 800px;
-  margin: auto;
+  padding: 6rem 1.5rem 4rem;
+}
+
+.work {
+  margin-top: 5rem;
+}
+
+.project {
+  padding: 1.5rem;
+  border-radius: 12px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .tagline {
@@ -45,9 +52,6 @@ h2 {
   font-size: 1.8rem;
 }
 
-.project {
-  margin: 2rem 0;
-}
 
 .project a {
   text-decoration: none;
