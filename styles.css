@@ -1,12 +1,14 @@
+/* --- Base --- */
 body {
   font-family: 'Inter', 'Work Sans', sans-serif;
   margin: 0;
   padding: 0;
   line-height: 1.65;
   color: #0f172a;
-  background: #f4f7f8;
+  background: linear-gradient(180deg, #f4f7f8 0%, #ffffff 100%);
 }
 
+/* --- Headings --- */
 h1 {
   font-family: 'Poppins', sans-serif;
   font-size: 3rem;
@@ -20,22 +22,76 @@ h2 {
   letter-spacing: -0.02em;
 }
 
+h2::after {
+  content: "";
+  display: block;
+  width: 40px;
+  height: 4px;
+  background: #2563eb; /* accent blue */
+  margin-top: 0.5rem;
+  border-radius: 2px;
+}
+
 p {
   color: #334155;
 }
 
+/* --- Hero --- */
 .hero {
   padding: 6rem 1.5rem 4rem;
+  background: linear-gradient(135deg, #e0f2fe, #ffffff);
+  text-align: center;
 }
 
+.tagline {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* --- Work / Projects --- */
+.work {
+  margin-top: 5rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 1.5rem;
+}
+
+.project {
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: #f0f9ff; /* light blue cards */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.project:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.project a {
+  font-weight: 500;
+  color: #2563eb;
+  text-decoration: none;
+}
+
+.project a:hover {
+  text-decoration: underline;
+}
+
+/* --- Academics --- */
 .academics {
   padding: 60px 20px;
-  background-color: #f9f9f9; /* light section background for contrast */
+  background-color: #f9fafb; /* light gray */
+  max-width: 700px;
+  margin: auto;
+  border-radius: 12px; /* optional for contained look */
 }
 
 .academics h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .academics h3 {
@@ -47,6 +103,14 @@ p {
   list-style-type: disc;
   padding-left: 20px;
   margin-top: 10px;
+  column-count: 2; /* split into 2 columns for large screens */
+  column-gap: 40px;
+}
+
+@media (max-width: 800px) {
+  .academics ul {
+    column-count: 1; /* stack on smaller screens */
+  }
 }
 
 .academics li {
@@ -54,13 +118,17 @@ p {
   line-height: 1.5;
 }
 
+/* --- Skills --- */
 .skills {
   padding: 60px 20px;
+  max-width: 700px;
+  margin: auto;
 }
 
 .skills h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .skills ul {
@@ -69,24 +137,29 @@ p {
   gap: 20px;
   padding-left: 0;
   list-style: none;
+  justify-content: center;
 }
 
 .skills li {
-  background-color: #e0e0e0;
+  background-color: #e0e0e0; /* subtle gray skill chips */
   padding: 8px 12px;
   border-radius: 12px;
   font-weight: 500;
   font-size: 0.95rem;
 }
 
+/* --- Artwork --- */
 .artwork {
   padding: 60px 20px;
-  background-color: #f9f9f9;
+  background-color: #fff7ed; /* soft peach */
+  max-width: 800px;
+  margin: auto;
 }
 
 .artwork h2 {
   font-size: 2rem;
   margin-bottom: 20px;
+  text-align: center;
 }
 
 .art-gallery {
@@ -119,9 +192,13 @@ p {
   color: #555;
 }
 
+/* --- Resume --- */
 .resume {
   padding: 60px 20px;
   text-align: center;
+  background-color: #ffffff;
+  max-width: 700px;
+  margin: auto;
 }
 
 .resume h2 {
@@ -145,72 +222,38 @@ p {
   background-color: #555;
 }
 
-.work {
-  margin-top: 5rem;
+/* --- Contact / Footer --- */
+.contact {
+  margin: 4rem 0;
+  padding: 60px 20px;
+  background-color: #111111; /* dark footer */
+  color: #ffffff;
+  text-align: center;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-.project {
-  padding: 1.5rem;
-  border-radius: 12px;
-  background: #f8fafc;
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+.contact p {
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.6;
+  text-align: center;
 }
 
-.project:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.tagline {
-  font-size: 1.2rem;
-  color: #555;
-}
-
-main {
-  max-width: 800px;
-  margin: auto;
-  padding: 0 1.5rem;
-}
-
-h2 {
-  margin-top: 4rem;
-  font-size: 1.8rem;
-}
-
-h2::after {
-  content: "";
-  display: block;
-  width: 40px;
-  height: 4px;
-  background: #2563eb;
-  margin-top: 0.5rem;
-  border-radius: 2px;
-}
-
-
-.project a {
-  font-weight: 500;
+.contact a {
+  display: inline-block;
+  margin: 0 10px;
   color: #2563eb;
   text-decoration: none;
+  font-weight: 500;
 }
 
-.project a:hover {
+.contact a:hover {
   text-decoration: underline;
 }
 
-.case-study {
-  margin-top: 4rem;
-}
-
-.subtitle {
-  color: #666;
-  margin-top: -0.5rem;
-}
-
-.about, .contact {
-  margin: 4rem 0;
-}
-
+/* --- Fade Animations --- */
 .fade-in {
   opacity: 0;
   transform: translateY(20px);
@@ -222,11 +265,6 @@ h2::after {
     opacity: 1;
     transform: translateY(0);
   }
-}
-
-.fade-in.visible {
-  opacity: 1;
-  transform: translateY(0);
 }
 
 .fade-in-left {
@@ -246,9 +284,13 @@ h2::after {
   transform: translateX(0);
 }
 
+/* --- Responsive --- */
 @media (max-width: 600px) {
   body {
     font-size: 16px;
+  }
+  .skills ul {
+    justify-content: center;
   }
 }
 
