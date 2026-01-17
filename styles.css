@@ -354,3 +354,12 @@ p {
     max-width: 90%;
   }
 }
+
+.case-container {
+  max-width: 700px;    /* keeps text readable */
+  margin: 0 auto;      /* centers container horizontally */
+  text-align: center;  /* centers all text inside */
+  padding: 40px 20px;  /* spacing around content */
+}
+
+
