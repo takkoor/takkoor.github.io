@@ -368,4 +368,50 @@ p {
   padding: 40px 20px;  /* spacing around content */
 }
 
+/* --- Artwork Modal --- */
+.art-modal {
+  display: none;
+  position: fixed;
+  z-index: 999;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  justify-content: center;
+  align-items: center;
+}
+
+.art-modal-content {
+  background: #ffffff;
+  max-width: 700px;
+  width: 90%;
+  padding: 30px;
+  border-radius: 16px;
+  text-align: center;
+  position: relative;
+}
+
+.art-modal-content img {
+  max-width: 100%;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.art-modal-content h3 {
+  margin-bottom: 10px;
+  font-size: 1.4rem;
+}
+
+.art-modal-content p {
+  color: #555;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.art-modal .close {
+  position: absolute;
+  top: 12px;
+  right: 16px;
+  font-size: 28px;
+  cursor: pointer;
+}
+
 
