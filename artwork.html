@@ -9,81 +9,84 @@
 
 <body>
 
+  <!-- Header -->
   <header class="hero">
     <div class="hero-container">
       <h1><a href="index.html">← Thejo Akkoor</a></h1>
-      <p class="tagline">Exploring creative expression through digital media and IB Art projects.</p>
+      <p class="tagline">
+        Exploring creative expression through digital media and IB Art projects.
+      </p>
     </div>
   </header>
 
+  <!-- Modal -->
+  <div id="artModal" class="art-modal">
+    <div class="art-modal-content">
+      <span class="close">&times;</span>
+      <img id="modalImage" src="" alt="">
+      <h3 id="modalTitle"></h3>
+      <p id="modalDescription"></p>
+    </div>
+  </div>
+
+  <!-- Main -->
   <main>
     <section class="artwork case-study">
       <div class="case-container">
         <h2>Digital Artwork & IB Art Portfolio</h2>
-        <p class="subtitle">Digital illustrations, comparative study, and IB Art portfolio slides</p>
+        <p class="subtitle">
+          Digital illustrations, comparative study, and IB Art portfolio slides
+        </p>
 
         <div class="project-media">
-
           <!-- PDFs -->
-          <iframe src="Comparative_Study___Figure-ing_It_Out_ (1).pdf" title="IB Comparative Study Slides"></iframe>
-          <iframe src="Thejo_Akkoor_-_Exhibition.pdf" title="IB Art Portfolio Slides"></iframe>
+          <iframe src="Comparative_Study___Figure-ing_It_Out_ (1).pdf"></iframe>
+          <iframe src="Thejo_Akkoor_-_Exhibition.pdf"></iframe>
 
           <!-- Images -->
           <img src="Untitled_Artwork 1.jpg"
-               alt="Nancy Drew Reimagined"
                data-title="Nancy Drew Reimagined"
-               data-description="A contemporary reinterpretation of Nancy Drew exploring identity, curiosity, and the reinvention of female protagonists through digital illustration.">
+               data-description="A contemporary reinterpretation of Nancy Drew exploring identity, curiosity, and the reinvention of female protagonists.">
 
           <img src="Untitled_Artwork 2.jpg"
-               alt="Bang! Bang! Bang(s)!"
                data-title="Bang! Bang! Bang(s)!"
-               data-description="A play on the concept of bangs that symbolize a revitalization of oneself inspired by pop culture.">
+               data-description="A playful exploration of transformation and pop culture symbolism through digital illustration.">
 
           <img src="Untitled_Artwork 4.jpg"
-               alt="Rising Phoenix – Class of 2023"
                data-title="Rising Phoenix – Class of 2023"
-               data-description="A symbolic digital illustration representing resilience, renewal, and collective growth for the graduating Class of 2023.">
+               data-description="A symbolic piece representing resilience, renewal, and collective growth for the graduating class.">
 
           <img src="Untitled_Artwork 5.jpg"
-               alt="Choose Your Character"
                data-title="Choose Your Character"
-               data-description="A playful commentary on identity and self-construction inspired by selecting personas in digital spaces.">
+               data-description="A commentary on identity construction and self-presentation in digital spaces.">
 
           <img src="Chronicles_Of_An_Awkward_Teenager.jpg"
-               alt="Chronicles of an Awkward Teenager"
                data-title="Chronicles of an Awkward Teenager"
-               data-description="A narrative-driven illustration capturing vulnerability and humor during adolescence.">
+               data-description="A narrative-driven illustration capturing vulnerability, humor, and adolescence.">
 
           <img src="SheHer.jpg"
-               alt="She / Her"
                data-title="She / Her"
-               data-description="A celebratory piece centered on femininity, strength, and self-expression.">
+               data-description="A celebratory piece honoring femininity, strength, and self-expression.">
 
           <img src="Untitled_Artwork 3.jpg"
-               alt="Vogue Out Loud"
                data-title="Vogue Out Loud"
-               data-description="A compilation of Met Gala looks exploring performative identity through fashion.">
+               data-description="A compilation of Met Gala-inspired looks exploring performative identity and confidence.">
 
           <img src="Untitled_Artwork 6.jpg"
-               alt="The Streets of San Francisco – Study I"
                data-title="The Streets of San Francisco – Study I"
-               data-description="Observational study of Victorian architecture in San Francisco.">
+               data-description="An observational study of Victorian architecture in San Francisco.">
 
           <img src="Untitled_Artwork 7.jpg"
-               alt="The Streets of San Francisco – Study II"
                data-title="The Streets of San Francisco – Study II"
-               data-description="Continuation of architectural studies focusing on perspective.">
+               data-description="A continuation focusing on perspective and spatial experience.">
 
           <img src="Untitled_Artwork 8.jpg"
-               alt="The Streets of San Francisco – Study III"
                data-title="The Streets of San Francisco – Study III"
-               data-description="Line-work exploration of San Francisco buildings.">
+               data-description="A line-focused architectural study capturing urban form.">
 
           <img src="Untitled_Artwork 9.jpg"
-               alt="Facial Features Study"
-               data-title="Facial Features Study"
-               data-description="An experimental digital portrait focusing on facial features.">
-
+               data-title="Facial Features – Study"
+               data-description="An experimental digital portrait study focusing on facial structure.">
         </div>
 
         <p><a href="index.html">← Back to Portfolio</a></p>
@@ -91,37 +94,32 @@
     </section>
   </main>
 
-  <!-- MODAL -->
-  <div id="artModal" class="art-modal">
-    <div class="art-modal-content">
-      <span class="close">&times;</span>
-      <img id="modalImage" alt="">
-      <h3 id="modalTitle"></h3>
-      <p id="modalDescription"></p>
-    </div>
-  </div>
-
-  <!-- SCRIPT (must be last) -->
+  <!-- SCRIPT (MUST BE AT BOTTOM) -->
   <script>
-    const modal = document.getElementById("artModal");
-    const modalImg = document.getElementById("modalImage");
-    const modalTitle = document.getElementById("modalTitle");
-    const modalDesc = document.getElementById("modalDescription");
-    const closeBtn = document.querySelector(".close");
+    document.addEventListener("DOMContentLoaded", () => {
+      const modal = document.getElementById("artModal");
+      const modalImg = document.getElementById("modalImage");
+      const modalTitle = document.getElementById("modalTitle");
+      const modalDesc = document.getElementById("modalDescription");
+      const closeBtn = document.querySelector(".close");
 
-    document.querySelectorAll(".project-media img").forEach(img => {
-      img.addEventListener("click", () => {
-        modal.style.display = "flex";
-        modalImg.src = img.src;
-        modalTitle.textContent = img.dataset.title;
-        modalDesc.textContent = img.dataset.description;
+      document.querySelectorAll(".project-media img").forEach(img => {
+        img.addEventListener("click", () => {
+          modal.style.display = "flex";
+          modalImg.src = img.src;
+          modalTitle.textContent = img.dataset.title;
+          modalDesc.textContent = img.dataset.description;
+        });
+      });
+
+      closeBtn.addEventListener("click", () => {
+        modal.style.display = "none";
+      });
+
+      modal.addEventListener("click", (e) => {
+        if (e.target === modal) modal.style.display = "none";
       });
     });
-
-    closeBtn.onclick = () => modal.style.display = "none";
-    modal.onclick = e => {
-      if (e.target === modal) modal.style.display = "none";
-    };
   </script>
 
 </body>
