@@ -269,26 +269,30 @@ section {
 .art-modal {
   display: none;
   position: fixed;
-  inset: 0;
   z-index: 999;
-  background: rgba(15, 23, 42, 0.85);
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   align-items: center;
+  overflow-y: auto; /* allow scrolling if content is taller than viewport */
 }
 
 .art-modal-content {
   background: #ffffff;
   max-width: 700px;
   width: 90%;
+  max-height: 90vh;   /* limit height to viewport */
   padding: 30px;
-  border-radius: 18px;
+  border-radius: 16px;
   text-align: center;
   position: relative;
+  overflow: auto;     /* scroll if content exceeds modal height */
 }
 
 .art-modal-content img {
   max-width: 100%;
-  border-radius: 14px;
+  max-height: 60vh; /* scale taller images so description is visible */
+  border-radius: 12px;
   margin-bottom: 20px;
 }
 
