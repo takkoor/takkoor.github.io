@@ -3,43 +3,237 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Policy Insight Tool – Thejo Akkoor</title>
-  <link rel="stylesheet" href="styles.css" />
+  <title>Designing Choice Architecture in Higher Education</title>
+
+  <style>
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.6;
+      color: #111;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 3rem 1.25rem;
+      background: #fff;
+    }
+
+    h1, h2, h3 {
+      line-height: 1.25;
+      margin-top: 2.5rem;
+    }
+
+    h1 {
+      font-size: 2.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    h2 {
+      font-size: 1.5rem;
+      border-bottom: 1px solid #eee;
+      padding-bottom: 0.25rem;
+    }
+
+    h3 {
+      font-size: 1.15rem;
+      margin-top: 1.75rem;
+    }
+
+    p {
+      margin: 1rem 0;
+    }
+
+    ul {
+      margin: 0.75rem 0 0.75rem 1.25rem;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      color: #444;
+      margin-bottom: 2rem;
+    }
+
+    .tldr {
+      background: #f7f7f7;
+      padding: 1.25rem;
+      border-radius: 8px;
+      margin: 2rem 0;
+    }
+
+    .artifact-links a {
+      display: inline-block;
+      margin-right: 1rem;
+      margin-top: 0.5rem;
+      text-decoration: none;
+      color: #005fcc;
+    }
+
+    .artifact-links a:hover {
+      text-decoration: underline;
+    }
+
+    .callout {
+      background: #fafafa;
+      border-left: 4px solid #ddd;
+      padding: 1rem 1.25rem;
+      margin: 1.5rem 0;
+      color: #333;
+    }
+  </style>
 </head>
+
 <body>
 
-  <header class="hero">
-    <div class="hero-container">
-      <h1>Thejo Akkoor</h1>
-      <p class="tagline">Product design focused on clarity, systems, and human-centered decision-making.</p>
-    </div>
-  </header>
+  <h1>Designing Choice Architecture in Higher Education</h1>
+  <p class="subtitle">
+    How curriculum design decisions shape user behavior, engagement, and access at scale
+  </p>
 
-  <main>
-    <section class="case-study">
-      <div class="case-container">
-        <h2>Policy Insight Tool</h2>
-        <p class="subtitle">Designing a policy decision-support experience</p>
+  <div class="tldr">
+    <strong>TL;DR</strong><br />
+    I studied how changes to General Education requirements across six public universities in Texas reshaped student course enrollment.
+    By analyzing a large, real-world system with constrained choices, I identified how default structures—not preferences alone—strongly
+    influence user behavior. This project demonstrates my ability to translate complex systems research into actionable insights for
+    product and systems design.
+  </div>
 
-        <p>
-          University administrators often make high-stakes decisions using fragmented and
-          inconsistent policy information. This project reframed a large-scale policy analysis
-          as a product design problem: how might we reduce cognitive load while enabling
-          meaningful comparison?
-        </p>
+  <h2>Context</h2>
+  <p>
+    Universities function as large decision-making systems. Students must choose courses that affect their time, finances,
+    and future career paths—often with limited information and high cognitive load.
+  </p>
+  <p>
+    In 2014, the Texas Higher Education Coordinating Board redesigned General Education requirements at public universities.
+    This policy change altered the <em>default academic pathways</em> students encountered, creating a natural opportunity to
+    study how structural design decisions influence user behavior.
+  </p>
 
-        <p><strong>My role:</strong> Research, product design, information architecture, data visualization</p>
-        <p><strong>Outcome:</strong> Policy brief, stakeholder presentation, conceptual dashboard</p>
+  <h2>Problem</h2>
+  <p>
+    How do changes to default requirements affect student decision-making and engagement?
+  </p>
+  <ul>
+    <li>Do users actively seek options once structural guidance is removed?</li>
+    <li>Which users are most sensitive to changes in defaults?</li>
+    <li>How does reduced structure affect early-stage engagement?</li>
+  </ul>
+  <p>
+    These questions closely parallel product design challenges around onboarding, choice overload,
+    and system defaults.
+  </p>
 
-        <div class="project-media">
-          <!-- Add images, mockups, or slides here -->
-          <p>[Images / slide deck placeholder]</p>
-        </div>
+  <h2>Users & Stakeholders</h2>
+  <h3>Primary users</h3>
+  <ul>
+    <li>Undergraduate students, especially first-year and undecided students</li>
+  </ul>
 
-        <p><a href="index.html">← Back to Portfolio</a></p>
-      </div>
-    </section>
-  </main>
+  <h3>Secondary stakeholders</h3>
+  <ul>
+    <li>Academic departments (funding tied to enrollment)</li>
+    <li>Faculty</li>
+    <li>University administrators</li>
+    <li>Policymakers</li>
+  </ul>
+
+  <p>
+    These groups often have competing incentives, similar to enterprise product environments
+    where multiple personas interact with the same system.
+  </p>
+
+  <h2>Constraints</h2>
+  <ul>
+    <li>Students face bounded rationality: many choices, unclear consequences</li>
+    <li>No direct visibility into user intent—only observed behavior</li>
+    <li>Curriculum changes must fit within fixed credit limits</li>
+    <li>Departments adapt in multiple ways simultaneously, creating confounding effects</li>
+  </ul>
+
+  <div class="callout">
+    These constraints required inferring user needs and behavior from real-world usage patterns
+    rather than relying on stated preferences—common in product analytics and behavioral research.
+  </div>
+
+  <h2>Research & Methods</h2>
+  <p>
+    I analyzed longitudinal enrollment data (2010–2023) from six four-year public universities in Texas,
+    combining course catalogs with administrative transcript data.
+  </p>
+  <p>
+    Rather than evaluating course content, I focused on how <strong>classification, visibility, and defaults</strong>
+    alone influenced behavior—analogous to studying how interface structure affects user actions
+    without changing underlying functionality.
+  </p>
+
+  <h2>Key Insights</h2>
+
+  <h3>1. Defaults strongly shape behavior</h3>
+  <p>
+    Courses designated as General Education requirements consistently saw higher enrollment,
+    even when course content remained unchanged.
+  </p>
+
+  <h3>2. Early-stage users are most sensitive</h3>
+  <p>
+    Introductory and “easy entry” courses experienced the largest enrollment drops when removed
+    from General Education requirements.
+  </p>
+
+  <h3>3. Structure matters more than preference</h3>
+  <p>
+    When courses lost their General Education status, many students did not actively seek them out,
+    suggesting engagement was driven more by system design than intrinsic interest.
+  </p>
+
+  <h2>Design Opportunities & Product Implications</h2>
+  <ul>
+    <li>
+      <strong>Intentional defaults:</strong> Defaults should be treated as core design decisions,
+      not neutral settings.
+    </li>
+    <li>
+      <strong>Guided exploration:</strong> Systems that balance autonomy with structure reduce
+      decision paralysis during early user journeys.
+    </li>
+    <li>
+      <strong>Equity-aware design:</strong> Users with less prior knowledge rely more heavily on system cues,
+      making default design a key access lever.
+    </li>
+  </ul>
+
+  <h2>Impact</h2>
+  <ul>
+    <li>Analyzed 200,000+ course enrollments</li>
+    <li>Identified structural drivers of engagement shifts</li>
+    <li>Insights applicable to education systems, policy design, and product onboarding</li>
+  </ul>
+
+  <h2>What I’d Build Next</h2>
+  <p>
+    If I were designing a product in this space, I would explore:
+  </p>
+  <ul>
+    <li>A planning interface that visualizes downstream impacts of early choices</li>
+    <li>“What-if” simulations to test system changes before rollout</li>
+    <li>Lightweight nudges that support informed decision-making without restricting autonomy</li>
+  </ul>
+
+  <h2>Supporting Artifacts</h2>
+  <p>
+    This project originated as a policy research effort. The materials below are included as optional
+    artifacts for reviewers who want deeper methodological or stakeholder-facing context.
+  </p>
+
+  <div class="artifact-links">
+    <a href="UROP Final Product - Policy Brief (2).pdf" target="_blank">
+      → View full policy brief (PDF)
+    </a>
+    <a href="The Causal Effect of General Education Requirements (1).pdf" target="_blank">
+      → View presentation slides (PDF)
+    </a>
+  </div>
 
 </body>
 </html>
