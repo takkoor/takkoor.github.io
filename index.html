@@ -1,154 +1,1028 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Thejo Akkoor – Portfolio</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css" />
-</head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Thejo Akkoor</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Instrument+Sans:wght@400;500;600&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --cream: #e8edf5;
+    --warm-white: #f2f4f7;
+    --ink: #0a1628;
+    --ink-soft: #0f1f3d;
+    --muted: #6b7fa3;
+    --rule: #c2cde0;
+    --accent: #e8c84a;
+    --accent-soft: rgba(232, 200, 74, 0.10);
+    --surface: #dce3ee;
+  }
 
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--warm-white);
+    color: var(--ink);
+    font-family: 'Instrument Sans', sans-serif;
+    line-height: 1.6;
+    cursor: none;
+  }
+
+  /* Custom cursor */
+  .cursor {
+    width: 10px; height: 10px;
+    background: var(--accent);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 9999;
+    transform: translate(-50%, -50%);
+    transition: transform 0.15s ease, width 0.25s ease, height 0.25s ease, opacity 0.25s ease;
+    mix-blend-mode: multiply;
+  }
+  .cursor.hover { width: 36px; height: 36px; opacity: 0.4; }
+
+  /* Layout */
+  .grid {
+    display: flex;
+    min-height: 100vh;
+  }
+
+  /* Sidebar */
+  aside {
+    position: fixed;
+    top: 0; left: 0;
+    width: 220px;
+    height: 100vh;
+    background: #0f1f3d;
+    border-right: 1px solid #1e3560;
+    padding: 3rem 1.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    z-index: 100;
+    overflow-y: auto;
+    flex-shrink: 0;
+  }
+
+  .logo {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.35rem;
+    font-weight: 400;
+    letter-spacing: 0.01em;
+    color: #f2f4f7;
+    line-height: 1.2;
+    margin-bottom: 0.2rem;
+  }
+
+  .logo em {
+    font-style: italic;
+    color: var(--accent);
+  }
+
+  .logo-sub {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #6b7fa3;
+    font-weight: 500;
+    margin-bottom: 3rem;
+  }
+
+  nav { flex: 1; }
+
+  nav ul { list-style: none; }
+
+  nav ul li { margin-bottom: 0.1rem; }
+
+  nav ul li a {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #6b7fa3;
+    text-decoration: none;
+    padding: 0.45rem 0;
+    border-bottom: 1px solid transparent;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  nav ul li a::before {
+    content: '';
+    width: 14px; height: 1px;
+    background: currentColor;
+    flex-shrink: 0;
+    transition: width 0.2s;
+  }
+
+  nav ul li a:hover, nav ul li a.active {
+    color: #f2f4f7;
+  }
+
+  nav ul li a:hover::before { width: 22px; }
+
+  .sidebar-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid #1e3560;
+    margin-top: 2rem;
+  }
+
+  .sidebar-contact a {
+    display: block;
+    font-size: 0.72rem;
+    color: #6b7fa3;
+    text-decoration: none;
+    margin-bottom: 0.35rem;
+    letter-spacing: 0.04em;
+    transition: color 0.2s;
+  }
+  .sidebar-contact a:hover { color: var(--accent); }
+
+  /* Main content */
+  main {
+    margin-left: 220px;
+    padding: 0;
+    flex: 1;
+    min-width: 0;
+    width: calc(100% - 220px);
+  }
+
+  /* Hero */
+  .hero {
+    padding: 7rem 5rem 5rem;
+    border-bottom: 1px solid var(--rule);
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+  }
+
+  .hero::before {
+    content: 'TA';
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 28vw;
+    font-weight: 300;
+    color: var(--rule);
+    position: absolute;
+    right: -2rem;
+    top: 50%;
+    transform: translateY(-50%);
+    line-height: 1;
+    pointer-events: none;
+    user-select: none;
+    letter-spacing: -0.05em;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+    white-space: nowrap;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 6vw, 6rem);
+    font-weight: 300;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+    margin-bottom: 2rem;
+    max-width: 700px;
+    position: relative;
+  }
+
+  .hero h1 span {
+    display: block;
+    font-style: italic;
+    color: var(--ink-soft);
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--ink-soft);
+    max-width: 480px;
+    line-height: 1.75;
+    position: relative;
+  }
+
+  .hero-chips {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+    position: relative;
+  }
+
+  .chip {
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 0.35em 0.9em;
+    font-weight: 500;
+  }
+
+  /* Section base */
+  .section {
+    padding: 5rem;
+    border-bottom: 1px solid var(--rule);
+    width: 100%;
+  }
+
+  .section-head {
+    display: flex;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .section-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--muted);
+    flex-shrink: 0;
+  }
+
+  .section-head h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 300;
+    letter-spacing: -0.02em;
+    color: var(--ink);
+    line-height: 1.1;
+  }
+
+  /* Work cards */
+  .work-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .work-card {
+    background: var(--warm-white);
+    padding: 2.25rem;
+    text-decoration: none;
+    display: block;
+    transition: background 0.25s;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .work-card::after {
+    content: '→';
+    position: absolute;
+    bottom: 2rem; right: 2rem;
+    font-size: 1.2rem;
+    color: var(--rule);
+    transition: color 0.25s, transform 0.25s;
+  }
+
+  .work-card:hover { background: var(--accent-soft); }
+  .work-card:hover::after { color: var(--accent); transform: translate(3px, -3px); }
+
+  .work-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1rem;
+  }
+
+  .work-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 400;
+    line-height: 1.15;
+    color: var(--ink);
+    margin-bottom: 0.9rem;
+    letter-spacing: -0.01em;
+  }
+
+  .work-card p {
+    font-size: 0.86rem;
+    color: var(--muted);
+    line-height: 1.65;
+    max-width: 340px;
+  }
+
+  /* Skills */
+  .skills-cols {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+
+  .skill-cat h3 {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .skill-cat ul { list-style: none; }
+
+  .skill-cat ul li {
+    font-size: 0.88rem;
+    color: var(--ink-soft);
+    padding: 0.3rem 0;
+    border-bottom: 1px solid transparent;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .skill-cat ul li::before {
+    content: '';
+    width: 4px; height: 4px;
+    background: var(--rule);
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: background 0.2s;
+  }
+
+  .skill-cat ul li:hover::before { background: var(--accent); }
+
+  /* Education + Awards */
+  .edu-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+  }
+
+  .edu-block h3 {
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 600;
+    margin-bottom: 1.5rem;
+  }
+
+  .edu-item {
+    margin-bottom: 1.25rem;
+    padding-bottom: 1.25rem;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .edu-item:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .edu-item .school {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-item .degree {
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .award-item {
+    padding: 0.85rem 0;
+    border-bottom: 1px solid var(--rule);
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+
+  .award-item:last-child { border-bottom: none; }
+
+  .award-year {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--muted);
+    flex-shrink: 0;
+    padding-top: 0.1rem;
+    min-width: 40px;
+  }
+
+  .award-item a {
+    font-size: 0.86rem;
+    color: var(--ink-soft);
+    text-decoration: none;
+    line-height: 1.5;
+    transition: color 0.2s;
+  }
+
+  .award-item a:hover { color: var(--accent); }
+
+  /* Courses */
+  .courses-wrap {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .course-pill {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 0.35em 0.85em;
+    transition: border-color 0.2s, color 0.2s;
+  }
+
+  .course-pill:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* Creative */
+  .creative-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--rule);
+    border: 1px solid var(--rule);
+  }
+
+  .creative-card {
+    background: var(--warm-white);
+    padding: 2.5rem;
+    text-decoration: none;
+    display: block;
+    transition: background 0.25s;
+  }
+
+  .creative-card:hover { background: var(--accent-soft); }
+
+  .creative-card .icon {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3.5rem;
+    font-weight: 300;
+    font-style: italic;
+    color: var(--rule);
+    line-height: 1;
+    margin-bottom: 1.25rem;
+    display: block;
+    transition: color 0.25s;
+  }
+
+  .creative-card:hover .icon { color: var(--accent); opacity: 0.4; }
+
+  .creative-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    color: var(--ink);
+    margin-bottom: 0.6rem;
+  }
+
+  .creative-card p {
+    font-size: 0.84rem;
+    color: var(--muted);
+    margin-bottom: 1.5rem;
+    line-height: 1.6;
+  }
+
+  .link-text {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: gap 0.2s;
+  }
+
+  .link-text:hover { gap: 0.7rem; }
+
+  /* About */
+  .about-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--ink-soft);
+    line-height: 1.8;
+    margin-bottom: 1.25rem;
+  }
+
+  .about-text p:last-child { margin-bottom: 0; }
+
+  .resume-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: #0a1628;
+    background: var(--accent);
+    text-decoration: none;
+    padding: 0.85em 1.75em;
+    transition: background 0.2s, color 0.2s;
+  }
+
+  .resume-btn:hover { background: var(--ink); color: var(--accent); }
+
+  .about-aside {
+    padding-top: 0.5rem;
+  }
+
+  .stat-item {
+    padding: 1.5rem 0;
+    border-bottom: 1px solid var(--rule);
+  }
+
+  .stat-item:first-child { border-top: 1px solid var(--rule); }
+
+  .stat-num {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 3rem;
+    font-weight: 300;
+    color: var(--ink);
+    line-height: 1;
+    margin-bottom: 0.25rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    font-weight: 500;
+  }
+
+  /* Footer */
+  footer {
+    padding: 4rem 5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+  }
+
+  .footer-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 300;
+    color: var(--muted);
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 1.5rem;
+  }
+
+  .footer-links a {
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+
+  .footer-links a:hover { color: var(--accent); }
+
+  /* Animations */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero { animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both; }
+  .section { opacity: 0; transition: opacity 0.6s ease, transform 0.6s ease; transform: translateY(24px); }
+  .section.visible { opacity: 1; transform: translateY(0); }
+
+  /* Responsive */
+  @media (max-width: 900px) {
+    .grid { grid-template-columns: 1fr; }
+    aside { position: relative; width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--rule); }
+    main { margin-left: 0; }
+    .hero, .section, footer { padding: 3rem 2rem; }
+    .hero::before { font-size: 40vw; }
+    .work-grid, .skills-cols, .edu-grid, .creative-split, .about-layout { grid-template-columns: 1fr; gap: 1px; }
+    .about-layout { gap: 2rem; background: transparent; }
+  }
+</style>
+</head>
 <body>
 
-  <header class="hero">
-  <div class="hero-container">
-    <h1>Thejo Akkoor</h1>
-    <p class="tagline">
-      Utilizing data analysis and user behavior research to design products with a
-    </p>
-    <p class="tagline">
-      focus on clarity, systems, and human-centered decision-making.
-    </p>
+<div class="cursor" id="cursor"></div>
+
+<div class="grid">
+
+<!-- Sidebar -->
+<aside>
+  <div class="logo">Thejomayi<br/><em>Akkoor</em></div>
+  <div class="logo-sub">Portfolio · 2027</div>
+
+  <nav>
+    <ul>
+      <li><a href="#work" class="nav-link">Work</a></li>
+      <li><a href="#experience" class="nav-link">Experience</a></li>
+      <li><a href="#leadership" class="nav-link">Leadership</a></li>
+      <li><a href="#skills" class="nav-link">Skills</a></li>
+      <li><a href="#education" class="nav-link">Education</a></li>
+      <li><a href="#creative" class="nav-link">Creative</a></li>
+      <li><a href="#about" class="nav-link">About</a></li>
+    </ul>
+  </nav>
+
+  <div class="sidebar-bottom">
+    <div class="sidebar-contact">
+      <a href="mailto:takkoor@umich.edu">takkoor@umich.edu</a>
+      <a href="https://linkedin.com/in/takkoor" target="_blank">LinkedIn →</a>
+      <a href="Thejo_Akkoor_Resume.pdf" target="_blank">Download Résumé</a>
+    </div>
   </div>
-</header>
+</aside>
 
-  <main>
+<!-- Main -->
+<main>
 
-    <section class="academics fade-in">
-  <h2>Academics & Awards</h2>
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <div class="hero-eyebrow">University of Michigan · B.S. Sociology & Statistics · GPA 3.93</div>
+    <h1>
+      Thejomayi
+      <span>Akkoor</span>
+    </h1>
+    <p class="hero-desc">Statistics and Sociology student using data analysis and user behavior research to inform product decisions — skilled in product analytics, research, and cross-functional collaboration.</p>
+    <div class="hero-chips">
+      <span class="chip">Product Analytics</span>
+      <span class="chip">UX Research</span>
+      <span class="chip">Data Analysis</span>
+      <span class="chip">Policy Tools</span>
+      <span class="chip">Class of 2027</span>
+    </div>
+  </section>
 
-  <h3>Education</h3>
-  <p>University of Michigan – Ann Arbor<br>
-     B.S. in Sociology & Statistics, Class of 2027</p>
+  <!-- Selected Work -->
+  <section class="section" id="work">
+    <div class="section-head">
+      <span class="section-num">i.</span>
+      <h2>Selected Work</h2>
+    </div>
 
-  <h3>Awards & Honors</h3>
-  <ul>
-    <li> <a href="https://honors.umich.edu/awards.php" target="_blank"> 4-Term University Honors (2023–2026) </a> </li>
-    <li> <a href="https://honors.umich.edu/branstrom.php" target="_blank"> William J. Branstorm Freshman Prize Book Award (2024) </a> </li>
-    <li> <a href="https://lsa.umich.edu/urop/symposium/spring-symposium/blue-ribbon-winners-.html" target="_blank"> Undergraduate Research Spring Symposium Blue Ribbon Award (2025) </a> </li>
-  </ul>
+    <div class="work-grid">
+      <a class="work-card" href="https://takkoor.github.io/policy.html" target="_blank">
+        <div class="work-tag">Case Study · UX + Policy</div>
+        <h3>Policy Insight Tool</h3>
+        <p>Transforming complex general education policy data into a decision-support experience for university stakeholders.</p>
+      </a>
 
-  <h3>Courses</h3>
-  <ul>
-    <li> Deep Learning </li>
-    <li> Introduction to Information Studies & UX/UI </li>
-    <li> Theoretical Statistics </li>
-    <li> Linear Regression Analysis </li>
-    <li> Sociological Theory </li>
-    <li> Computational Social Science </li>
-    <li> Python for Everybody </li>
-  </ul>
-</section>
+      <a class="work-card" href="https://takkoor.github.io/landlord.html" target="_blank">
+        <div class="work-tag">Case Study · Mobile UX</div>
+        <h3>Rate Your Landlord</h3>
+        <p>Designing a mobile experience to improve transparency and trust for student renters.</p>
+      </a>
 
-<section class="skills fade-in">
-  <h2>Skills & Tools</h2>
-  <p>My toolkit combines research, design, and technical skills:</p>
-  <ul>
-    <li> User-Centered Research </li>
-    <li> UX/UI Design – Figma, Adobe Express, Canva </li>
-    <li> Data Analysis & Visualization – Python, R </li>
-    <li> Elementary C++ </li>
-    <li> Data cleaning </li>
-    <li> Data annotation </li>
-    <li> Statistical modeling </li>
-    <li> Document analysis </li>
-    <li> Client communication </li>
-    <li> Stakeholder presentations </li>
-    <li> Workshop facilitation </li>
-    <li> Team collaboration </li>
-  </ul>
-</section>
+      <a class="work-card" href="https://takkoor.github.io/epet.html" target="_blank">
+        <div class="work-tag">Project · Infographic</div>
+        <h3>Education Policy Evaluation Tool</h3>
+        <p>An interactive infographic establishing concrete criteria for education policy to support decision-making processes.</p>
+      </a>
 
-    <section class="artwork fade-in">
-        <h2>Creative Projects</h2>
-  <div class="project">
-  <h3>Artwork & IB Portfolio</h3>
-  <p>A selection of digital artwork, comparative study slides, and my IB Art portfolio slides.</p>
-  <a href="artwork.html">View full artwork portfolio →</a>
-</div>
-  <div class="project">
-  <h3>Writing</h3>
-  <p>A selection of my informational articles and personal essays.</p>
-  <a href="writing.html">View full writing portfolio →</a>
-</div>
-</section>
-    
-    <section class="work fade-in">
-  <h2>Selected Work</h2>
+      <a class="work-card" href="https://takkoor.github.io/stayinformed.html" target="_blank">
+        <div class="work-tag">Project · Research Visual</div>
+        <h3>Avoiding Mis/Disinformation</h3>
+        <p>A research-based visual guide to help students identify and prevent misinformation online.</p>
+      </a>
+    </div>
+  </section>
 
-  <div class="project">
-    <h3>Policy Insight Tool</h3>
-    <p>
-      Transforming complex general education policy data into a decision-support experience
-      for university stakeholders.
-    </p>
-    <a href="policy.html">View case study →</a>
-  </div>
+  <!-- Experience -->
+  <section class="section" id="experience">
+    <div class="section-head">
+      <span class="section-num">ii.</span>
+      <h2>Experience</h2>
+    </div>
 
-  <div class="project">
-    <h3>Rate Your Landlord</h3>
-    <p>
-      Designing a mobile experience to improve transparency and trust for student renters.
-    </p>
-    <a href="landlord.html">View case study →</a>
-  </div>
+    <div style="display:flex;flex-direction:column;gap:1px;background:var(--rule);border:1px solid var(--rule);">
 
-      <div class="project">
-    <h3>Education Policy Evaluation Tool</h3>
-    <p>
-      An interactive infographic that establishes a concrete set of criteria for education policy to help decision-making processes.
-    </p>
-    <a href="epet.html">View project →</a>
-  </div>
+      <div style="background:var(--warm-white);padding:2rem 2.25rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem;">
+          <div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--ink);">Chartflow</span>
+            <span style="font-size:0.78rem;color:var(--accent);margin-left:0.75rem;font-weight:600;">Product Analytics & UX Research Intern</span>
+          </div>
+          <span style="font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;">Jan 2026 – Present</span>
+        </div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;">
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);">Designed surveys and analyzed 50+ qualitative testimonials to evaluate usability of an EHR simulation product</li>
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);">Analyzed website usage data across 1,000+ sessions to evaluate engagement and UX improvement opportunities</li>
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);">Synthesized quantitative and qualitative insights for founders and product stakeholders</li>
+        </ul>
+      </div>
 
-  <div class="project">
-    <h3>Infographic: Avoiding Mis/Disinformation</h3>
-    <p>
-      A research-based visual guide to help students identify and prevent misinformation online.
-    </p>
-    <a href="stayinformed.html">View project →</a>
-  </div>
-</section>
+      <div style="background:var(--warm-white);padding:2rem 2.25rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem;">
+          <div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--ink);">Short Circuit</span>
+            <span style="font-size:0.78rem;color:var(--accent);margin-left:0.75rem;font-weight:600;">Director of Product Experience</span>
+          </div>
+          <span style="font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;">Jan 2026 – Present</span>
+        </div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;">
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);">Built structured user feedback and support systems to assess product usability and effectiveness</li>
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);">Analyzed recurring user feedback to surface pain points and feature requests for early-stage product decisions</li>
+        </ul>
+      </div>
 
+      <div style="background:var(--warm-white);padding:2rem 2.25rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem;">
+          <div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--ink);">University of Michigan — Education Policy Initiative</span>
+            <span style="font-size:0.78rem;color:var(--accent);margin-left:0.75rem;font-weight:600;">Research Assistant</span>
+          </div>
+          <span style="font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;">May 2025 – Present</span>
+        </div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;">
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);">Performed data integration, cleaning, and QA on 100k+ records across large-scale, multi-institutional education datasets</li>
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);">Standardized data from 30+ institutions using Excel, Python, and annotation tools for consistency</li>
+        </ul>
+      </div>
 
-    <section class="resume fade-in">
-  <h2>Resume</h2>
-  <p>Download a full copy of my resume:</p>
-  <a href="Thejo_Akkoor_Resume (1).pdf" target="_blank">Download PDF</a>
-</section>
+      <div style="background:var(--warm-white);padding:2rem 2.25rem;">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;flex-wrap:wrap;gap:0.5rem;margin-bottom:0.6rem;">
+          <div>
+            <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--ink);">University of Michigan — UROP Research Scholars</span>
+            <span style="font-size:0.78rem;color:var(--accent);margin-left:0.75rem;font-weight:600;">Research Mentee</span>
+          </div>
+          <span style="font-size:0.72rem;color:var(--muted);letter-spacing:0.06em;">Sep 2023 – May 2025</span>
+        </div>
+        <ul style="list-style:none;display:flex;flex-direction:column;gap:0.4rem;">
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);">Analyzed 300+ unstructured documents (college syllabi); built regression models and visualizations in R to assess trends in general education requirements</li>
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);">Synthesized findings into a 13-page policy brief and stakeholder presentations</li>
+          <li style="font-size:0.86rem;color:var(--ink-soft);padding-left:1rem;border-left:2px solid var(--rule);color:var(--accent);">🏅 Blue Ribbon Award for Outstanding Oral Research Presentation (2025)</li>
+        </ul>
+      </div>
 
+    </div>
+  </section>
 
-    <section class="about">
+  <!-- Leadership -->
+  <section class="section" id="leadership">
+    <div class="section-head">
+      <span class="section-num">iii.</span>
+      <h2>Leadership</h2>
+    </div>
+
+    <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--rule);border:1px solid var(--rule);">
+
+      <div style="background:var(--warm-white);padding:2rem;">
+        <div style="font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.5rem;">May 2025 – Present</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:0.25rem;">UROP Peer Facilitator</div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">University of Michigan</div>
+        <p style="font-size:0.83rem;color:var(--ink-soft);line-height:1.6;">Lead bi-weekly workshops for 20+ undergraduates on analytical communication, data integrity, and documentation.</p>
+      </div>
+
+      <div style="background:var(--warm-white);padding:2rem;">
+        <div style="font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.5rem;">May 2025 – Present</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:0.25rem;">Co-President</div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">She's the First — UMich</div>
+        <p style="font-size:0.83rem;color:var(--ink-soft);line-height:1.6;">Directed strategy, programming, and external communications for a 50+ member education-advocacy organization.</p>
+      </div>
+
+      <div style="background:var(--warm-white);padding:2rem;">
+        <div style="font-size:0.65rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent);font-weight:600;margin-bottom:0.5rem;">Jan 2025 – Present</div>
+        <div style="font-family:'Cormorant Garamond',serif;font-size:1.15rem;color:var(--ink);margin-bottom:0.25rem;">Vice President & Co-Founder</div>
+        <div style="font-size:0.78rem;color:var(--muted);margin-bottom:1rem;">Memory Project — UMich</div>
+        <p style="font-size:0.83rem;color:var(--ink-soft);line-height:1.6;">Co-founded chapter, scaled to 100+ participants, delivered 80+ portraits to nonprofit partners.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- Skills -->
+
+  <section class="section" id="skills">
+    <div class="section-head">
+      <span class="section-num">iv.</span>
+      <h2>Skills & Tools</h2>
+    </div>
+
+    <div class="skills-cols">
+      <div class="skill-cat">
+        <h3>Research</h3>
+        <ul>
+          <li>User-Centered Research</li>
+          <li>Document Analysis</li>
+          <li>Data Annotation</li>
+          <li>Data Cleaning</li>
+          <li>Statistical Modeling</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Design</h3>
+        <ul>
+          <li>UX/UI Design</li>
+          <li>Figma</li>
+          <li>Adobe Express</li>
+          <li>Canva</li>
+        </ul>
+      </div>
+      <div class="skill-cat">
+        <h3>Technical</h3>
+        <ul>
+          <li>Python</li>
+          <li>R</li>
+          <li>Elementary C++</li>
+          <li>Data Visualization</li>
+        </ul>
+      </div>
+    </div>
+
+    <div style="margin-top:2.5rem; padding-top:2.5rem; border-top:1px solid var(--rule);">
+      <p style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:1rem;">Also skilled in</p>
+      <div style="display:flex;flex-wrap:wrap;gap:0.5rem;">
+        <span style="font-size:0.78rem;color:var(--ink-soft);background:var(--surface);border:1px solid var(--rule);padding:0.3em 0.8em;">Client Communication</span>
+        <span style="font-size:0.78rem;color:var(--ink-soft);background:var(--surface);border:1px solid var(--rule);padding:0.3em 0.8em;">Stakeholder Presentations</span>
+        <span style="font-size:0.78rem;color:var(--ink-soft);background:var(--surface);border:1px solid var(--rule);padding:0.3em 0.8em;">Workshop Facilitation</span>
+        <span style="font-size:0.78rem;color:var(--ink-soft);background:var(--surface);border:1px solid var(--rule);padding:0.3em 0.8em;">Team Collaboration</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section class="section" id="education">
+    <div class="section-head">
+      <span class="section-num">v.</span>
+      <h2>Academics & Awards</h2>
+    </div>
+
+    <div class="edu-grid">
+      <div>
+        <div class="edu-block">
+          <h3>Education</h3>
+          <div class="edu-item">
+            <div class="school">University of Michigan</div>
+            <div class="degree">B.S. Sociology & Statistics · Ann Arbor · Class of 2027</div>
+          </div>
+        </div>
+
+        <div style="margin-top:2.5rem;">
+          <h3 style="font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;color:var(--muted);font-weight:600;margin-bottom:1rem;">Coursework</h3>
+          <div class="courses-wrap">
+            <span class="course-pill">Deep Learning</span>
+            <span class="course-pill">Intro to Information Studies & UX/UI</span>
+            <span class="course-pill">Theoretical Statistics</span>
+            <span class="course-pill">Linear Regression Analysis</span>
+            <span class="course-pill">Sociological Theory</span>
+            <span class="course-pill">Computational Social Science</span>
+            <span class="course-pill">Python for Everybody</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="edu-block">
+          <h3>Awards & Honors</h3>
+          <div class="award-item">
+            <span class="award-year">×4</span>
+            <a href="https://honors.umich.edu/awards.php" target="_blank">James B. Angell Scholar (2026)</a>
+          </div>
+          <div class="award-item">
+            <span class="award-year">×4</span>
+            <a href="https://honors.umich.edu/awards.php" target="_blank">University Honors (2023–2026)</a>
+          </div>
+          <div class="award-item">
+            <span class="award-year">2025</span>
+            <a href="https://honors.umich.edu/awards.php" target="_blank">Sophomore Honors Award</a>
+          </div>
+          <div class="award-item">
+            <span class="award-year">2025</span>
+            <a href="https://lsa.umich.edu/urop/symposium/spring-symposium/blue-ribbon-winners-.html" target="_blank">UROP Blue Ribbon Award — Outstanding Oral Research Presentation</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Creative Projects -->
+  <section class="section" id="creative">
+    <div class="section-head">
+      <span class="section-num">iv.</span>
+      <h2>Creative Projects</h2>
+    </div>
+
+    <div class="creative-split">
+      <a class="creative-card" href="https://takkoor.github.io/artwork.html" target="_blank">
+        <span class="icon">✦</span>
+        <h3>Artwork & IB Portfolio</h3>
+        <p>Digital artwork, comparative study slides, and IB Art portfolio — a visual practice rooted in observation and iteration.</p>
+        <span class="link-text">View full portfolio →</span>
+      </a>
+
+      <a class="creative-card" href="https://takkoor.github.io/writing.html" target="_blank">
+        <span class="icon">¶</span>
+        <h3>Writing</h3>
+        <p>Informational articles and personal essays exploring the intersection of social systems, policy, and human experience.</p>
+        <span class="link-text">View full writing →</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section class="section" id="about">
+    <div class="section-head">
+      <span class="section-num">v.</span>
       <h2>About</h2>
-      <p>
-        I’m a University of Michigan undergraduate studying Sociology and Statistics, with
-        a strong interest in designing tools that help people navigate complex systems.
-        My work blends research, data, and design to create thoughtful, human-centered experiences.
-      </p>
-    </section>
+    </div>
 
-    <section class="contact">
-      <h2>Contact</h2>
-      <p>
-        <a href="mailto:takkoor@umich.edu">takkoor@umich.edu</a> ·
-        <a href="https://linkedin.com/in/takkoor" target="_blank">LinkedIn</a>
-      </p>
-    </section>
+    <div class="about-layout">
+      <div class="about-text">
+        <p>I'm a University of Michigan undergraduate studying Sociology and Statistics, with a strong interest in designing tools that help people navigate complex systems.</p>
+        <p>My work blends research, data, and design to create thoughtful, human-centered experiences — from policy insight dashboards to mobile transparency tools.</p>
+        <p>I believe good design isn't decoration; it's the clearest path between a complex problem and a real person who needs to understand it.</p>
+        <a class="resume-btn" href="Thejo_Akkoor_Resume.pdf" target="_blank">Download Résumé ↓</a>
+      </div>
 
-  </main>
+      <div class="about-aside">
+        <div class="stat-item">
+          <div class="stat-num">3.93</div>
+          <div class="stat-label">GPA at University of Michigan</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">100k+</div>
+          <div class="stat-label">Records processed for EPI research</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-num">2027</div>
+          <div class="stat-label">Expected graduation</div>
+        </div>
+      </div>
+    </div>
+  </section>
 
+  <!-- Footer -->
+  <footer>
+    <span class="footer-name">Thejo Akkoor · Ann Arbor, MI</span>
+    <div class="footer-links">
+      <a href="mailto:takkoor@umich.edu">Email</a>
+      <a href="https://linkedin.com/in/takkoor" target="_blank">LinkedIn</a>
+      <a href="Thejo_Akkoor_Resume.pdf" target="_blank">Résumé</a>
+    </div>
+  </footer>
+
+</main>
+</div>
+
+<script>
+  // Custom cursor
+  const cursor = document.getElementById('cursor');
+  document.addEventListener('mousemove', e => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+  document.querySelectorAll('a, button').forEach(el => {
+    el.addEventListener('mouseenter', () => cursor.classList.add('hover'));
+    el.addEventListener('mouseleave', () => cursor.classList.remove('hover'));
+  });
+
+  // Scroll reveal
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+  // Active nav
+  const sections = document.querySelectorAll('section[id], .hero[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const link = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+        if (link) link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.4 });
+  sections.forEach(s => navObserver.observe(s));
+</script>
 </body>
 </html>
-
